@@ -55,9 +55,9 @@ except ImportError:
             raise RuntimeError('error executing {0}'.format(cmds))
 
         if sys.platform == 'darwin':
-            result = re.search('^\s@rpath/(lib.+.dylib)', out, re.MULTILINE)
+            result = re.search(r'^\s@rpath/(lib.+.dylib)', out, re.MULTILINE)
         else:
-            result = re.search('^\s+SONAME\s+(.+)$',out,re.MULTILINE)
+            result = re.search(r'^\s+SONAME\s+(.+)$',out,re.MULTILINE)
 
         if result:
             return result.group(1)
